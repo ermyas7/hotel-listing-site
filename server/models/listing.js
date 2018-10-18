@@ -2,6 +2,7 @@ const mongoose = require("mongoose")
 
 const schema = mongoose.Schema
 const listingSchema = schema({
+	id   : Number, 
 	title: String,
 	about: String,
 	//aminities

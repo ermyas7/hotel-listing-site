@@ -16,6 +16,15 @@ function seeder(){
 			}
 		})
 	} )
+
+	// List.remove({}, (err) => {
+	// 	if(err){
+	// 		console.log(err)
+	// 	}
+	// 	else{
+	// 		console.log("database cleaned")
+	// 	}
+	// })
 }
 
 module.exports = seeder;
