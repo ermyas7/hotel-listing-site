@@ -33,6 +33,16 @@ app.get("/listing/:id", (req, res) => {
 })
 
 //get all listing
+app.get("/listing", (req, res) => {
+	List.find({}, (err, lists) => {
+		if(err){
+			console.log(err)
+		}
+		else{
+			res.send(lists)
+		}
+	})
+})
 
 
 app.listen(process.env.PORT||8081, () => console.log("server running!"))
