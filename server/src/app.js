@@ -1,16 +1,17 @@
-const mongoose = require("mongoose")
-const morgan	= require("morgan")
-const cors		= require("cors")
-const bodyParser = require("body-parser")
-const express	= require("express")
-const List 		=	require("../models/listing")
-const seedDB 	= require("../seed")
-const app = express()
+const mongoose 		= require("mongoose")
+const morgan		= require("morgan")
+const cors			= require("cors")
+const bodyParser 	= require("body-parser")
+const express		= require("express")
+const List 			=	require("../models/listing")
+const listingRouter = require("../api/listing")
+const seedDB 		= require("../seed")
+const app 			= express()
 //config app
 app.use(morgan("combined"))
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}))
-
+app.use(express.static(__dirname+"/public"));
 //config database
 mongoose.connect("mongodb://localhost:27017/hotel_listing", {useNewUrlParser: true})
 const db = mongoose.connection
@@ -19,30 +20,9 @@ db.once("open", (cb) => console.log("successfully connected to the database!"))
 
 //seed existing data
 //seedDB()
+//use routers
+app.use("/", listingRouter);
 
-//get listing
-app.get("/listing/:id", (req, res) => {
-	List.find({id: req.params.id}, (err, list) => {
-		if(err){
-			console.log(err)
-		}
-		else{
-			res.send(list)
-		}
-	})
-})
-
-//get all listing
-app.get("/listing", (req, res) => {
-	List.find({}, (err, lists) => {
-		if(err){
-			console.log(err)
-		}
-		else{
-			res.send(lists)
-		}
-	})
-})
 
 
 app.listen(process.env.PORT||8081, () => console.log("server running!"))
