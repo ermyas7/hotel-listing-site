@@ -5,6 +5,7 @@ const listingSchema = schema({
 	id   : Number, 
 	title: String,
 	about: String,
+	address: String,
 	//aminities
 	amenity_wifi: {
 		type: Boolean,
@@ -46,7 +47,11 @@ const listingSchema = schema({
 	price_monthly_discount: {
 		type: String,
 		default: null
-	}
+	},
+	image_1: String,
+	image_2: String,
+	image_3: String,
+	image_4: String
 
 })
 
