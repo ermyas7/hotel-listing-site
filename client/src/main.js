@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import listingService from '@/services/listingService'
-import "core-js/fn/object/assign"
-import { populateAmenitiesAndPrices } from "../static/js/helpers"
+import 'core-js/fn/object/assign'
+import { populateAmenitiesAndPrices } from '../static/js/helpers'
+import ImageCarousel from './components/ImageCarousel'
 const app = new Vue({
 	el: "#app",
 	data:{
@@ -11,6 +12,9 @@ const app = new Vue({
 		},
 		contracted: true,
 		modelOpen: false
+	},
+	components:{
+		ImageCarousel
 	},
 	watch:{
 		modelOpen: function(val){

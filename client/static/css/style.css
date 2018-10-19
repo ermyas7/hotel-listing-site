@@ -185,13 +185,6 @@ outline: none;
   height: 10rem;
   overflow: hidden;
 }
-.modal-content{
-  height: 100%;
-  max-width: 105vh;
-  padding-top: 12vh;
-  margin: 0 auto;
-  position: relative;
-}
 #modal{
   position: fixed;
   display: none;
@@ -204,9 +197,7 @@ outline: none;
   background-color: rgba(0,0,0,0.85);
 }
 
-.modal-content img{
-  max-width: 100%;
-}
+
 
 #modal.show{
   display: block;
