@@ -1,9 +1,9 @@
 <template>
 	<div class="carousel-content">
-		<img v-bind:src="images[0]"/>
+		<img v-bind:src="images[index]"/>
 		<div class="controls">
-			<carousel-control dir="left"></carousel-control>
-			<carousel-control dir="right"></carousel-control>
+			<carousel-control dir="left"  @change-image="changeImage"></carousel-control>
+			<carousel-control dir="right" @change-image="changeImage" ></carousel-control>
 		</div>
 	</div>
 </template>
@@ -11,20 +11,35 @@
 <script>
 	import CarouselControl from './CarouselControl'
 	export default{
+		props: ['images'],
 		data(){
 			return {
-				images: [
-							"/static/images/14/Image_1.jpg",
-							"/static/images/14/Image_2.jpg",
-							"/static/images/14/Image_3.jpg",
-							"/static/images/14/Image_4.jpg"
-						]
+				index: 0		
 				}
 		},
 		components:{
 			CarouselControl
+		},
+		computed:{
+			image(){
+				return this.images[this.index]
+			}
+		},
+		methods:{
+			changeImage(val){
+				let newVal = this.index + parseInt(val)
+				if(newVal < 0 ){
+					this.index = this.images.length - 1
+				}
+				else if(newVal === this.images.length){
+					this.index = 0
+				}
+				else{
+					this.index = newVal
+				}
+			}
 		}
-	}
+	}		
 </script>
 
 <style scoped>
