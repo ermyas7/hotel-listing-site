@@ -1,5 +1,5 @@
 <template>
-	<div class="carousel-content">
+	<div class="image-carousel">
 		<img v-bind:src="images[index]"/>
 		<div class="controls">
 			<carousel-control dir="left"  @change-image="changeImage"></carousel-control>
@@ -43,20 +43,18 @@
 </script>
 
 <style scoped>
-	.carousel-content{
+	.image-carousel{
 		  height: 100%;
-		  max-width: 105vh;
 		  margin-top: -12vh;
-		  margin: 0 auto;
 		  position: relative;
 		  display: flex;
 		 align-items: center;
 		 justify-content: center;
 	}
-	.carousel-content img{
+	.image-carousel img{
   		max-width: 100%;
 		}
-	.carousel-content .controls {	
+	.image-carousel .controls {	
 		 position: absolute;
 		 width: 100%;
 		 display: flex;

@@ -4,10 +4,10 @@ import Api from '@/services/Api'
 
 export default{
 	fetchListing(){
-		return Api().get('listing')
+		return Api().get('/listing')
 	},
 
 	getListing(id){
-		return Api().get('listing/' + id)
+		return Api().get('listing/'+id)
 	}
 }
